@@ -1,0 +1,135 @@
+<!doctype html>
+
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="{{url_for('static',filename='style.css')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,500&display=swap" rel="stylesheet">
+
+    <title>Offer Letter Mailer</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{url_for('index')}}" style="text-align: center;">
+                <span style="font-size: 40px;font-weight:bold;display:block;">CODEGNAN</span>
+                <p style="font-size: 18px;padding-left:20px;">IT SOLUTIONS</p>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item active" style="font-size: 25px;font-weight:bold;padding-right:30px;">
+                        <a class="nav-link" href="{{url_for('index')}}">HOME</a>
+                    </li>
+
+                    <li class="nav-item" style="font-size: 25px;font-weight:bold;padding-right:30px;">
+                        <a class="nav-link" href="{{url_for('candidate_details')}}">CANDIDATE DETAILS</a>
+                    </li>
+
+
+                    <li class="nav-item" style="font-size: 25px;font-weight:bold;padding-right:30px;">
+                        <a class="nav-link" href="{{url_for('add_candidates')}}">ADD CANDIDATES</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="content">
+        <video autoplay loop muted id="bgvideo">        <!--   Mute the video and add it-->
+        <source src="{{url_for('static',filename='bg_vedioo.mp4')}}" type="video/mp4">
+    </video>
+
+
+        <!--            ALERT            -->
+        {% if message %}
+
+        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert" style="border-radius: 0px;">
+            <strong>{{message}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+
+        {% endif %}
+
+        <div style="clear: both;"></div>
+
+
+
+        <div class="container pt-5">
+            <h1 class="text-center" style="color:white;">CERTIFICATE MAILER</h1>
+
+            <div class="pt-5" id="information">
+
+                <div class="bg-light p-5 " style="border-radius:10px;">
+
+                    <form class="form-horizontal" method="POST" action="/mail_sent">
+                        <div class="form-group p-2">
+                            <label for="exampleFormControlInput1">PDF File Name or Path</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="docfile" placeholder="Eg. OfferLetter.pdf">
+                        </div>
+
+
+                        <div class="form-group p-2">
+                            <label for="exampleFormControlSelect1">Whom you want to mail?</label>
+                            <select class="form-control" name="whom_to_send" id="exampleFormControlSelect1">
+                <option selected="true" disabled="disabled">Whom To Mail (Any)</option>
+                <option value="everyone">EveryOne</option>
+
+                {% for a,b,c,d in listed_df %}
+            <option value="{{a}}">{{a}}</option>
+
+            {% endfor %}
+
+
+              </select>
+                        </div>
+
+                        <button class="btn btn-secondary btn-block mt-5 p-3" type="submit">Send Mail</button>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="page-footer font-small bg-dark text-white fixed-bottom">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            <a href="#" style="text-decoration: none;">CODEGNAN IT SOLUTIONS</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>

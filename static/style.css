@@ -1,0 +1,16 @@
+#bgvideo {
+    position: fixed;
+    min-height: 100%;
+    min-width: 100%;
+    font-family: 'Vollkorn', sans-serif;
+    z-index: -100;
+}
+
+body {
+    position: relative;
+    font-family: 'Roboto Mono', monospace;
+}
+
+#sucess_msg {
+    position: absolute;
+}

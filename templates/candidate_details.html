@@ -1,0 +1,134 @@
+<!doctype html>
+
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="{{url_for('static',filename='style.css')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,500&display=swap" rel="stylesheet">
+
+    <title>Offer Letter Mailer</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{url_for('index')}}" style="text-align: center;">
+                <span style="font-size: 40px;font-weight:bold;display:block;">CODEGNAN</span>
+                <p style="font-size: 18px;padding-left:20px;">IT SOLUTIONS</p>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item" style="font-size: 25px;font-weight:bold;padding-right:30px;">
+                        <a class="nav-link" href="{{url_for('index')}}">HOME</a>
+                    </li>
+
+                    <li class="nav-item active" style="font-size: 25px;font-weight:bold;padding-right:30px;">
+                        <a class="nav-link" href="{{url_for('candidate_details')}}">CANDIDATE DETAILS</a>
+                    </li>
+
+
+                    <li class="nav-item" style="font-size: 25px;font-weight:bold;padding-right:30px;">
+                        <a class="nav-link" href="{{url_for('add_candidates')}}">ADD CANDIDATES</a>
+                    </li>
+
+
+                    <!-- <li class="nav-item dropdown d-none d-xl-block" style="font-size: 25px;font-weight:bold;">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>e
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li> -->
+
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <video autoplay loop muted id="bgvideo">        <!--   Mute the video and add it-->
+        <source src="{{url_for('static',filename='bg_vedioo.mp4')}}" type="video/mp4">
+    </video>
+
+
+    <div class="container mt-3 mb-3">
+
+        <h1 class="text-center pt-5 mb-5" style="color:white;">CANDIDATE DETAILS</h1>
+
+        <a href="{{url_for('remove_candidate')}}" class="btn-btn-secondary float-right p-3 bg-danger text-white">Remove Candidate</a>
+
+        <table class="table table-hover table-secondary">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Campus Name</th>
+                    <th scope="col">Phone No</th>
+                    <th scope="col">Student Email</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for a,b,c,d in listed_df %}
+                <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{a}}</td>
+                    <td>{{b}}</td>
+                    <td>{{c}}</td>
+                    <td>{{d}}</td>
+
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <footer class="page-footer font-small bg-dark text-white mt-5 sticky-bottom">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            <a href="#" style="text-decoration: none;">CODEGNAN IT SOLUTIONS</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>
