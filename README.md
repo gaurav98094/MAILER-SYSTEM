@@ -19,9 +19,9 @@ the email.
 # Project Files
 The project have folloing file:
 
-## Frontend Files
+### Frontend Files
 1. static : consist of css and background images
 2. templates : html templates
-## Python Files
+### Python Files
 1. app.py : consist of the project logic
 2. codes.py : module to send mail to the required candidates (imported in app.py)
